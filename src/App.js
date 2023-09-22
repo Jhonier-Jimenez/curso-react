@@ -1,11 +1,15 @@
+import React from "react";
 import "./App.css";
+import Header from "../src/components/Header";
+import CatImages from "../src/components/CatImages";
+import Footer from "../src/components/Footer";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Learn React</p>
-      </header>
+      <Header />
+      <CatImages />
+      <Footer />
     </div>
   );
 }
