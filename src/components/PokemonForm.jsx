@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-const PokemonForm = ({ onSubmit }) => {
+const PokemonForm = ({ onSearch }) => {
   const [pokemonName, setPokemonName] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(pokemonName);
+    onSearch(pokemonName);
   };
 
   return (

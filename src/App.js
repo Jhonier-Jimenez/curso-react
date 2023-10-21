@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <h1>Pokémon Info</h1>
-      <PokemonForm onSubmit={handleFormSubmit} />
+      <PokemonForm onSearch={handleFormSubmit} />
       <PokemonInfo pokemonName={pokemonName} />
     </div>
   );

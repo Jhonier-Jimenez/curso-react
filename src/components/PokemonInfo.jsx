@@ -12,7 +12,9 @@ const PokemonInfo = ({ pokemonName }) => {
 
   useEffect(() => {
     if (pokemonName) {
-      fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+      fetch(
+        `https://pokeapi.co/api/v2/pokemon/${pokemonName.trim().toLowerCase()}`
+      )
         .then((response) => response.json())
         .then((data) => {
           setPokemonData(data);
