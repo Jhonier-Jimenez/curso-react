@@ -1,1 +1,53 @@
+/* App Styles */
+.tutorial {
+  text-align: center;
 
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.align-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+body {
+  background-color: #27005d;
+}
+
+/* Button Styles */
+button {
+  background-color: #9400ff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-right: 1rem;
+}
+
+/* Input Styles */
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
+
+/* List Styles */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 5px 0;
+  font-size: 18px;
+  font-family: "Helvetica Neue", sans-serif;
+  color: white;
+}
