@@ -8,6 +8,10 @@ const PokemonForm = ({ onSearch }) => {
     onSearch(pokemonName.value);
   };
 
+  // const handleOnChange = (event) => {
+  //   setPokemonName(event.target.value);
+  // };
+
   return (
     <form onSubmit={handleSubmit}>
       <input type="text" placeholder="Enter Pokémon name" {...pokemonName} />

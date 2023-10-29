@@ -47,10 +47,38 @@ const PokemonInfo = ({ pokemonName }) => {
           </div>
         </div>
       ) : (
-        <p className="NoData">
-          No Pokémon data available. Please enter a Pokémon name and submit the
-          form.
-        </p>
+        <div className="PokemonInfo">
+          <div>
+            {generationData && (
+              <div>
+                <h2>Generation Names:</h2>
+                <ul>
+                  {generationData.results.map((generation) => (
+                    <li key={generation.name}>{generation.name}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+
+          {pokemonData ? (
+            <div>
+              <h2>{pokemonData.name}</h2>
+              <img
+                src={pokemonData.sprites.front_default}
+                alt={pokemonData.name}
+              />
+              <p>Height: {pokemonData.height} decimetres</p>
+              <p>Weight: {pokemonData.weight} hectograms</p>
+              {/* {pokemonData.abilities && <PokemonAbilities />} */}
+            </div>
+          ) : (
+            <p className="NoData">
+              No Pokémon data available. Please enter a Pokémon name and submit
+              the form.
+            </p>
+          )}
+        </div>
       )}
     </div>
   );
