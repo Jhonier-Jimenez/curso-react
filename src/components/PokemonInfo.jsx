@@ -1,28 +1,17 @@
-import { useEffect, useState } from "react";
+import PokemonAbilities from "./PokemonAbilities";
+import PokemonStats from "./PokemonStats";
+import { useFetch } from "../Hooks/useFetch";
+import useFetchParam from "../Hooks/useFetchParam";
 
 const PokemonInfo = ({ pokemonName }) => {
-  const [generationData, setGenerationData] = useState(null);
-  const [pokemonData, setPokemonData] = useState(null);
+  const { data: generationData } = useFetch(
+    "https://pokeapi.co/api/v2/generation"
+  );
 
-  useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/generation")
-      .then((response) => response.json())
-      .then((data) => setGenerationData(data));
-  }, []);
-
-  useEffect(() => {
-    if (pokemonName) {
-      fetch(
-        `https://pokeapi.co/api/v2/pokemon/${pokemonName.trim().toLowerCase()}`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          setPokemonData(data);
-          console.log(data);
-        });
-    }
-  }, [pokemonName]);
-
+  const pokemonData = useFetchParam(
+    "https://pokeapi.co/api/v2/pokemon/",
+    pokemonName
+  );
   return (
     <div className="PokemonInfo">
       <div>
@@ -39,11 +28,23 @@ const PokemonInfo = ({ pokemonName }) => {
       </div>
 
       {pokemonData ? (
-        <div>
-          <h2>{pokemonData.name}</h2>
-          <img src={pokemonData.sprites.front_default} alt={pokemonData.name} />
-          <p>Height: {pokemonData.height} decimetres</p>
-          <p>Weight: {pokemonData.weight} hectograms</p>
+        <div className="pokemonData">
+          <div className="dataContainer">
+            <h2>{pokemonData.name}</h2>
+            <img
+              src={pokemonData.sprites.front_default}
+              alt={pokemonData.name}
+            />
+            <p>Height: {pokemonData.height} decimetres</p>
+            <p>Weight: {pokemonData.weight} hectograms</p>
+          </div>
+          <div className="dataContainer">
+            {pokemonData.abilities && (
+              <PokemonAbilities abilities={pokemonData.abilities} />
+            )}
+
+            {pokemonData.stats && <PokemonStats stats={pokemonData.stats} />}
+          </div>
         </div>
       ) : (
         <p className="NoData">

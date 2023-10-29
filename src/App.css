@@ -83,3 +83,11 @@ p {
   font-size: 18px;
   margin-top: 10px;
 }
+
+.pokemonData {
+  display: flex;
+}
+
+.dataContainer {
+  margin-right: 2rem;
+}
