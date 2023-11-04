@@ -13,15 +13,19 @@ describe("<PokemonForm />", () => {
   });
 
   test("calls onSubmit function when the form is submitted", () => {
+    //ARRANGE
     const onSearch = jest.fn();
+
     render(<PokemonForm onSearch={onSearch} />);
 
-    const inputElement = screen.getByPlaceholderText(/Enter Pokémon name/i);
+    const nameInput = screen.getByPlaceholderText(/Enter Pokémon name/i);
     const submitButton = screen.getByText(/Submit/i);
 
-    fireEvent.change(inputElement, { target: { value: "pikachu" } });
+    //ACT
+    fireEvent.change(nameInput, { target: { value: "pikachu" } });
     fireEvent.click(submitButton);
 
+    //ASSERT
     expect(onSearch).toHaveBeenCalledWith("pikachu");
   });
 });
